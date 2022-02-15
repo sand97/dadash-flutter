@@ -1,7 +1,7 @@
 import { camelCase } from "camel-case";
 import {Method} from "./block_builder/UrlInput";
 import { snakeCase } from "snake-case";
-
+import { pascalCase } from "pascal-case";
 
 export const request_url = (baseName: string) => `
 //TODO change ... with the endpoint
@@ -27,7 +27,7 @@ export const remote_data_source_impl = (baseName: string, auth: boolean, method:
               options: Options(headers: headers));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return ${baseName}Response.fromJson(response.data['user']);
+        return ${baseName}Response.fromJson(response.data);
       } else {
         throw ServerException(
             response.statusCode ?? 400, "failed", response.data['message']);

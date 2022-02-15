@@ -38,7 +38,7 @@ import {
     repository_interface,
     request_url, use_case
 } from "./templates";
-
+import { pascalCase } from "pascal-case";
 SyntaxHighlighter.registerLanguage('dart', dart);
 
 
@@ -240,34 +240,34 @@ function App() {
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'URL'}
-                                    text={request_url(baseName)}/>
+                                    text={request_url(pascalCase(baseName))}/>
                             </Box>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'Remote data source interface'}
-                                    text={remotes_data_sources(baseName)}/>
+                                    text={remotes_data_sources(pascalCase(baseName))}/>
                             </Box>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'Remote data source implementation'}
-                                    text={remote_data_source_impl(baseName, auth, method)}/>
+                                    text={remote_data_source_impl(pascalCase(baseName), auth, method)}/>
                             </Box>
                         </Grid>
                         <Grid item xs={12} lg={6}>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'Repository interface'}
-                                    text={repository_interface(baseName)}/>
+                                    text={repository_interface(pascalCase(baseName))}/>
                             </Box>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'Repository implementation'}
-                                    text={repository_impl(baseName)}/>
+                                    text={repository_impl(pascalCase(baseName))}/>
                             </Box>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'UseCase'}
-                                    text={use_case(baseName, repository)}/>
+                                    text={use_case(pascalCase(baseName), repository)}/>
                             </Box>
                         </Grid>
                     </Grid>

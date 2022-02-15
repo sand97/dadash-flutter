@@ -26,9 +26,9 @@ interface UrlInputProps {
     onChange: (value: UrlInput) => void
 }
 
-export type Method = 'POST' | 'GET' | 'DELETE' | 'UPDATE'
+export type Method = 'POST' | 'GET' | 'DELETE' | 'PUT'
 
-export const methods: Method[] = ['POST', 'GET', 'DELETE', 'UPDATE']
+export const methods: Method[] = ['POST', 'GET', 'DELETE', 'PUT']
 
 export const UrlInputComponent = (props: UrlInputProps) => {
     const [dialog, setDialog] = useState(false);
