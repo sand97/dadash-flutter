@@ -1,14 +1,12 @@
-import { camelCase } from "camel-case";
+import {camelCase} from "camel-case";
 import {Method} from "./block_builder/UrlInput";
-import { snakeCase } from "snake-case";
-import { pascalCase } from "pascal-case";
+import {snakeCase} from "snake-case";
 
-export const request_url = (baseName: string) => `
-//TODO change ... with the endpoint
-const ${snakeCase(baseName).toUpperCase()}_URL = "...";
+export const request_url = (baseName: string, apiEndpoint: string = "") => `
+const ${snakeCase(baseName).toUpperCase()}_URL = "${apiEndpoint}";
 `;
 
-export const remotes_data_sources = (baseName: string) =>  `
+export const remotes_data_sources = (baseName: string) => `
   Future<${baseName}Response?> ${camelCase(baseName)}(${baseName}Payload payload);
 `
 

@@ -38,7 +38,8 @@ import {
     repository_interface,
     request_url, use_case
 } from "./templates";
-import { pascalCase } from "pascal-case";
+import {pascalCase} from "pascal-case";
+
 SyntaxHighlighter.registerLanguage('dart', dart);
 
 
@@ -54,6 +55,7 @@ function App() {
 
     const [auth, setAuth] = useState(false);
     const [repository, setRepository] = useState('');
+    const [apiEndPoint, setApiEndPoint] = useState("");
 
     const [bodyCode, setBodyCode] = useState('');
     const [responseCode, setResponseCode] = useState('');
@@ -149,25 +151,6 @@ function App() {
                                 fullWidth
                                 onChange={e => setBaseName(e.target.value)}
                                 label={'Class'}
-                                InputProps={{
-                                    endAdornment: <InputAdornment position={'end'}>
-                                        <Fab
-                                            disabled={!body && !response}
-                                            onClick={async () => {
-                                                if (body) {
-                                                    const {lines} = await quicktypeJSONSchema(`${baseName}Payload`, body);
-                                                    setBodyCode(lines.join('\n'));
-                                                }
-                                                if (response) {
-                                                    const {lines} = await quicktypeJSONSchema(`${baseName}Response`, response);
-                                                    setResponseCode(lines.join('\n'));
-                                                }
-                                            }}
-                                            size={'small'} color={'primary'}>
-                                            <Check color={'#fff'}/>
-                                        </Fab>
-                                    </InputAdornment>
-                                }}
                             />
                         </Grid>
                         <Grid item xs={12} lg={6}>
@@ -215,6 +198,33 @@ function App() {
                             />
                         </Box>
                     </Grid>
+                    <Grid item xs={12} lg={3}>
+                        <TextField
+                            value={apiEndPoint}
+                            fullWidth
+                            onChange={e => setApiEndPoint(e.target.value)}
+                            label={'API End point'}
+                        />
+                    </Grid>
+                    <Grid item xs={12} lg={3}>
+                        <Button
+                            variant={"contained"}
+                            color={"primary"}
+                            disabled={!body && !response}
+                            onClick={async () => {
+                                if (body) {
+                                    const {lines} = await quicktypeJSONSchema(`${baseName}Payload`, body);
+                                    setBodyCode(lines.join('\n'));
+                                }
+                                if (response) {
+                                    const {lines} = await quicktypeJSONSchema(`${baseName}Response`, response);
+                                    setResponseCode(lines.join('\n'));
+                                }
+                            }}
+                        >
+                            Generate Repository interface
+                        </Button>
+                    </Grid>
                 </Grid>
                     <Box mt={4}>
                         <Grid container spacing={4}>
@@ -240,7 +250,7 @@ function App() {
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
                                     title={'URL'}
-                                    text={request_url(pascalCase(baseName))}/>
+                                    text={request_url(pascalCase(baseName), apiEndPoint)}/>
                             </Box>
                             <Box mb={4}>
                                 <CustomSyntaxHighlighter
