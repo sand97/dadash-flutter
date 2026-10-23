@@ -15,6 +15,7 @@
     "@types/node": "^16.11.22",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "buffer": "^6.0.3",
     "camel-case": "^4.1.2",
     "notistack": "^2.0.3",
     "pascal-case": "^3.1.2",
@@ -25,7 +26,7 @@
     "react-feather": "^2.0.9",
     "react-json-editor-ajrm": "^2.5.13",
     "react-json-view": "^1.21.3",
-    "react-scripts": "latest",
+    "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^15.4.5",
     "snake-case": "^3.0.4",
     "typescript": "^4.5.5",
@@ -57,11 +58,14 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "latest",
+    "@craco/craco": "^7.1.0",
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/react-json-editor-ajrm": "^2.5.2",
     "@types/react-syntax-highlighter": "^13.5.2",
     "craco-alias": "^3.0.1",
     "react-error-overlay": "6.0.9"
+  },
+  "overrides": {
+    "@types/babel__traverse": "7.20.6"
   }
 }
